@@ -1,0 +1,99 @@
+*{
+   margin :0;
+   padding :0;
+}
+html{
+   background: #21273d;
+   min-height:100vh;
+   height:-webkit-fill-available;
+   
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  height: 90px;
+}
+.header .logo{
+   color:#ffd700;
+   text-shadow:0 5px 10px black;
+}
+.header .list{
+   font-size: 150%;
+   background : #c6c691;
+   font-weight:bold;
+   color: navy;
+   padding:5px;
+   border-radius:0.5rem;
+   border:1px solid #c6c691;
+   text-decoration:none;
+}
+
+
+.creation {
+  text-align: center;
+}
+.creation h3{
+   color:white;
+   margin-top:2rem;
+}
+.creation .task {
+  background:#21273d;
+  height: 10vw;
+  width: 70vw;
+  font-size:150%;
+  border:none;
+  border-bottom: 3px solid lightyellow;
+  color:orange;
+  outline :none;
+}
+
+.creation .hour, .creation .minute {
+  margin-top:1rem;
+  line-height:180%;
+  background:#21273d;
+  color:orange;
+  display: inline-block;
+  height: 8vw;
+  width: 8vw;
+  font-size:6vw;
+  border:none;
+  border-bottom: 3px solid lightyellow;
+  outline: none;
+  overflow-y:scroll;
+}
+.creation #meridien{
+   background :#ffaaf4;
+   padding:1vw;
+   margin:auto  auto auto 1rem;
+   border-radius:0.5rem;
+   position:relative;
+   bottom:7px;
+   color:white;
+   font-weight:bold;
+   font-size:3vw;
+   
+}
+.creation .addtask {
+  background: #c6c691;
+  color:navy;
+  font-weight:bold;
+  border-radius: 3px;
+  font-size:150%;
+  margin-top: 2rem;
+  padding: 4px 5px;
+  border-radius:0.5rem;
+  border:1px solid #c6c691;
+}
+.creation .addtask:hover,
+.header .list:hover{
+   box-shadow:0 0 15px #c6c691;
+}
+.creation .addtask:active,
+.header .list:active {
+    font-size:146%;
+    }
+.creation #alert{
+   color:red;
+   margin-top:5px;
+}

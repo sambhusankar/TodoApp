@@ -1,0 +1,55 @@
+*{
+   margin:0;
+   padding:0;
+}
+body{
+   background:#21273d;
+}
+.header{
+   display:flex;
+   justify-content: space-between;
+   align-items:center;
+   height:90px;
+}
+.header .logo{
+   color:#ffd700;
+   text-shadow:0 5px 10px black;
+   font-size:5vw;
+   display:inline-block;
+   margin-left:9vw;
+}
+.header .edit{
+   font-size: 5vw;
+   background : #c6c691;
+   font-weight:bold;
+   color: navy;
+   padding: 5px;
+   border-radius:0.5rem;
+   border:1px solid #c6c691;
+   display:none;
+   margin-right:9vw;
+}
+.header .edit.active{
+   display:block;
+}
+ol li::before{
+   color:red;
+}
+.tasks li{
+   background: #c6c691;
+   margin:0.5rem auto;
+   padding:5px 15px;
+   width:80vw;
+   
+}
+.tasks li .avtive{
+   border:3px solid green;
+}
+.tasks li >p:first-child{
+   color:#04003c;
+   font-size:3vw;
+}
+.tasks li >p:nth-child(2){
+   color:#390076 ;
+   font-size:5vw;
+}
