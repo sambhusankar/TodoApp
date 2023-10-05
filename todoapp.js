@@ -14,6 +14,7 @@ Notification.requestPermission().then((permission)=>{
             var noti= new Notification("daily2do wants to notify your task in time")
          }
       })
+let notified= new Notification("it is a notification")
 
 //function for infinity scrolling of time
 function infinity_scroll(elem){
