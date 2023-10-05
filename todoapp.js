@@ -5,6 +5,7 @@ const task=document.getElementById("task");
 const alert=document.getElementById("alert");
 const tasks=document.getElementById("tasks");
 const edit=document.getElementById("edit");
+let alarm=new Audio("content://com.android.providers.media.documents/document/audio%3A1000044416")
 const date= new Date();
 let mid_hh= date.getHours();
 let mid_mm= date.getMinutes();
@@ -26,6 +27,7 @@ hh.addEventListener("scroll",()=>infinity_scroll(hh)
 
 // function for adding a task to localStorage 
 addtask.addEventListener("click",()=>{
+   
    let input=task.value;
    let time_hh=Math.floor(hh.scrollTop/hh.scrollHeight*24)+1;   
    if(hh.scrollTop==0){
@@ -39,7 +41,7 @@ addtask.addEventListener("click",()=>{
    let meridian =time_hh<12?"AM":"PM"
    
    let time=`${time_hh} : ${time_mm} ${meridian}`;
-  console.log(time)
+  
   if(input.trim() =="") {
      alert.innerText="* Please enter a task"
   }
@@ -53,6 +55,11 @@ addtask.addEventListener("click",()=>{
    if(value==input){
       taskExists=true
       alert.innerText="* This task is already added"
+      Notification.requestPermission().then((permission)=>{
+         if(permission=="granted"){
+            new Notification("daily2do wants to notify your task in time")
+         }
+      })
       }
    }
    
@@ -80,10 +87,11 @@ for (let i = 0; i < localStorage.length; i++) {
 arry_tasks.sort((a, b) => {
   let A = a.KEY.split(":").map(Number);
   let B = b.KEY.split(":").map(Number);
-  if(A[0]==B[0]){
-     return B[1]-A[1]
+  if(A[0]===B[0]){
+     return B[1] - A[1]
   }else{
      return B[0] - A[0];
+  
   }
 });
 
@@ -100,20 +108,68 @@ arry_tasks.forEach((item) => {
  });
 
 // adding a click event on Every task
+
 try{
-tasks.addEventListener('click',()=>{
+tasks.addEventListener('click',(event)=>{
    
       edit.classList.toggle('active')
-      tasks.classList.toggle('active')
-    
+      event.target.classList.toggle('active')
+  if(event.target.parentNode.children[1]===event.target){
+   a=event.target.innerText
+   b=event.target
+   }
    
+  c= event.target.parentNode.children[0].innerText
 })
-}catch(err){}
 
 edit.addEventListener('click',()=>{
+  try{
    let inputField=document.createElement('input')
    inputField.type='text'
-   inputField.value=tasks.innerText
+   inputField.value=a
    inputField.id="inputField"
-   console.log(tasks.innerText)
+   b.replaceWith(inputField)
+   }catch(err){}
+});
+// for saving the task edited by user
+
+document.addEventListener('keydown',(event)=>{
+   let inputField=document.getElementById("inputField");
+   if(event.key==="Enter"){
+      let newTask=inputField.value;
+      localStorage.setItem(c,newTask);
+      let para=document.createElement("p");
+      para.innerText=localStorage.getItem(c);
+      inputField.replaceWith(para);
+   }
 })
+
+
+
+
+//For reminding a task which time to do
+for(let i=0;i<localStorage.length;i++){
+   let item=document.querySelectorAll("li");
+   let hour =item[i].firstElementChild.innerText;
+   let hours=hour.substring(0,hour.indexOf(':'));
+   let minutes=hour.substring(hour.indexOf(':')+1,7);
+   
+   if(hours==mid_hh && minutes==mid_mm){
+      alarm.play()
+      new Notification(item[i])
+   }
+   
+   if(hours < mid_hh){
+     item[i].style.backgroundColor="red"
+     }
+   if(hours==mid_hh){  
+      if(minutes < mid_mm){
+           item[i].style.backgroundColor="red"
+        }
+       }
+    
+     
+      
+   
+}
+}catch(err){}

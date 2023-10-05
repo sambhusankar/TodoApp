@@ -42,7 +42,7 @@ ol li::before{
    width:80vw;
    
 }
-.tasks li .avtive{
+.tasks li:active {
    border:3px solid green;
 }
 .tasks li >p:first-child{
@@ -51,5 +51,13 @@ ol li::before{
 }
 .tasks li >p:nth-child(2){
    color:#390076 ;
+   font-size:5vw;
+}
+.tasks li input{
+   color:#390076;
+   border: none;
+   background:#c6c691;
+   border-bottom: 2px solid #21273d;
+   outline: none;
    font-size:5vw;
 }
