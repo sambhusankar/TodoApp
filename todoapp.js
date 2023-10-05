@@ -5,13 +5,13 @@ const task=document.getElementById("task");
 const alert=document.getElementById("alert");
 const tasks=document.getElementById("tasks");
 const edit=document.getElementById("edit");
-let alarm=new Audio("content://com.android.providers.media.documents/document/audio%3A1000044416")
+let alarm=new Audio("Working_Analog_Clock_using_Html_CSS_SVG___JavaScript_Clock_%2523shorts(256k).mp3")
 const date= new Date();
 let mid_hh= date.getHours();
 let mid_mm= date.getMinutes();
 Notification.requestPermission().then((permission)=>{
-         if(permission=="granted"){
-            new Notification("daily2do wants to notify your task in time")
+         if(permission==="granted"){
+            var noti= new Notification("daily2do wants to notify your task in time")
          }
       })
 
