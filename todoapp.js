@@ -9,6 +9,11 @@ let alarm=new Audio("content://com.android.providers.media.documents/document/au
 const date= new Date();
 let mid_hh= date.getHours();
 let mid_mm= date.getMinutes();
+Notification.requestPermission().then((permission)=>{
+         if(permission=="granted"){
+            new Notification("daily2do wants to notify your task in time")
+         }
+      })
 
 //function for infinity scrolling of time
 function infinity_scroll(elem){
@@ -55,11 +60,6 @@ addtask.addEventListener("click",()=>{
    if(value==input){
       taskExists=true
       alert.innerText="* This task is already added"
-      Notification.requestPermission().then((permission)=>{
-         if(permission=="granted"){
-            new Notification("daily2do wants to notify your task in time")
-         }
-      })
       }
    }
    
