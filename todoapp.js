@@ -9,6 +9,7 @@ let alarm=new Audio("Working_Analog_Clock_using_Html_CSS_SVG___JavaScript_Clock_
 const date= new Date();
 let mid_hh= date.getHours();
 let mid_mm= date.getMinutes();
+window.alert(Notification.permission)
 Notification.requestPermission().then((permission)=>{
          if(permission==="granted"){
             var noti= new Notification("daily2do wants to notify your task in time")
